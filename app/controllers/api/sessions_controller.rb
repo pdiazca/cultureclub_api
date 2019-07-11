@@ -10,10 +10,11 @@ module Api
             @user  = User.find_by_email(params[:email])
 
             if @user.valid_password?(params[:password])
-                render :json => {
-                    email: @user.email, 
-                    authentication_token: @user.authentication_token, 
-                    is_admin: @user.is_admin}, status: :ok
+                render :create, status: :ok
+                # render :json => {
+                #     email: @user.email, 
+                #     authentication_token: @user.authentication_token, 
+                #     is_admin: @user.is_admin}, status: :ok
             else
                 head(:unauthorized)
             end
