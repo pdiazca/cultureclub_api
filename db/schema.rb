@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_221820) do
+ActiveRecord::Schema.define(version: 2019_07_10_221533) do
+
+  create_table "raffle_contestants", force: :cascade do |t|
+    t.integer "user_id_id"
+    t.integer "raffle_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["raffle_id_id"], name: "index_raffle_contestants_on_raffle_id_id"
+    t.index ["user_id_id"], name: "index_raffle_contestants_on_user_id_id"
+  end
+
+  create_table "raffles", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "winner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "created_by"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
