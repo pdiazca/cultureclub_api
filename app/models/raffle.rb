@@ -1,6 +1,7 @@
 class Raffle < ApplicationRecord
     validates :name, presence: true
 
-    has_many :raffle_contestants
-    has_many :users, through: :raffle_contestants
+    has_many :rafflecontestants, dependent: :delete_all
+    has_many :users, through: :rafflecontestants, dependent: :delete_all
 end
+    

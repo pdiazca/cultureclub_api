@@ -2,6 +2,15 @@ module Api
     class UsersController < ApplicationController
         protect_from_forgery prepend: true
 
+        before_action :authenticate_user, only: [:show]
+
+        def show 
+            @user = User.find(params[:id])
+            @raffles = params[:raffles] ? @user.raffles : nil
+
+            render :show, status: :ok
+        end
+
         def create
             @user = User.new(user_params)
             

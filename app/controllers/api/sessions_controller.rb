@@ -11,10 +11,6 @@ module Api
 
             if @user.valid_password?(params[:password])
                 render :create, status: :ok
-                # render :json => {
-                #     email: @user.email, 
-                #     authentication_token: @user.authentication_token, 
-                #     is_admin: @user.is_admin}, status: :ok
             else
                 head(:unauthorized)
             end
